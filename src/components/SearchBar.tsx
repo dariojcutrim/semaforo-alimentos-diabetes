@@ -3,9 +3,14 @@
 interface Props {
   value: string;
   onChange: (value: string) => void;
+  placeholder?: string;
 }
 
-export function SearchBar({ value, onChange }: Props) {
+export function SearchBar({
+  value,
+  onChange,
+  placeholder = "Ex: maçã, arroz, refrigerante...",
+}: Props) {
   return (
     <div className="relative w-full">
       <label htmlFor="food-search" className="sr-only">
@@ -24,7 +29,7 @@ export function SearchBar({ value, onChange }: Props) {
         autoComplete="off"
         autoFocus
         spellCheck={false}
-        placeholder="Ex: maçã, arroz, refrigerante..."
+        placeholder={placeholder}
         value={value}
         onChange={(e) => onChange(e.target.value)}
         className="w-full h-16 rounded-2xl border-2 border-[var(--border)] bg-[var(--surface)] pl-14 pr-14 text-xl text-[var(--foreground)] placeholder:text-[var(--muted)] shadow-sm transition-colors focus:border-[var(--accent)]"
