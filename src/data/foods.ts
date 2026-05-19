@@ -177,8 +177,10 @@ export const FOODS: Food[] = [
   // ─────────────────────────────────────────────
   // 🟢 VERDE — Oleaginosas e sementes
   // ─────────────────────────────────────────────
-  { name: "Castanhas", tier: "verde", category: "Oleaginosas e sementes", synonyms: ["castanha", "castanha do pará", "castanha do para", "castanha do brasil", "castanha de caju"] },
-  { name: "Nozes", tier: "verde", category: "Oleaginosas e sementes", synonyms: ["noz"] },
+  { name: "Castanhas", tier: "verde", category: "Oleaginosas e sementes", synonyms: ["castanha", "castanha do pará", "castanha do para", "castanha do brasil", "castanha de caju"], tip: "Excelentes para diabéticos: têm baixo índice glicêmico e ajudam a estabilizar a glicose. Mas coma com moderação por serem calóricas. Porção ideal: cerca de 4 castanhas-do-pará ou 10 castanhas-de-caju por dia. Prefira sempre in natura — evite as versões com sal ou açúcar." },
+  { name: "Nozes", tier: "verde", category: "Oleaginosas e sementes", synonyms: ["noz"], tip: "Ricas em gorduras boas, fibras e antioxidantes — ajudam a controlar a glicemia e proteger o coração. Porção ideal: cerca de 5 unidades por dia. São calóricas, então coma com moderação. Prefira sempre in natura, sem sal ou açúcar." },
+  { name: "Amêndoas", tier: "verde", category: "Oleaginosas e sementes", synonyms: ["amendoa", "amêndoa", "amendoas"], tip: "Ótimas para diabéticos: ricas em fibras, proteínas e gorduras boas que ajudam a evitar picos de glicemia. Porção ideal: cerca de 10 a 12 unidades por dia. São calóricas, então coma com moderação. Prefira sempre in natura, sem sal ou açúcar." },
+  { name: "Amendoim", tier: "verde", category: "Oleaginosas e sementes", synonyms: ["amendoins", "pasta de amendoim"], tip: "Tem baixo índice glicêmico e é rico em proteínas e gorduras boas. Porção ideal: cerca de 20 unidades ou 1 colher de sopa de pasta (sem açúcar). Evite as versões salgadas de pacote ou caramelizadas — são processadas e prejudicam a saúde." },
   { name: "Chia", tier: "verde", category: "Oleaginosas e sementes", synonyms: ["semente de chia", "sementes de chia"] },
   { name: "Linhaça", tier: "verde", category: "Oleaginosas e sementes", synonyms: ["linhaca", "semente de linhaça", "semente de linhaca"] },
   { name: "Semente de abóbora", tier: "verde", category: "Oleaginosas e sementes", synonyms: ["sementes de abóbora", "sementes de abobora", "semente de abobora"] },
