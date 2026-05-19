@@ -1,116 +1,81 @@
 "use client";
 
-import { useDeferredValue, useMemo, useState } from "react";
-import { EmptyState } from "@/components/EmptyState";
-import { ModeToggle, type Mode } from "@/components/ModeToggle";
-import { NotFoundState } from "@/components/NotFoundState";
-import { ResultCard } from "@/components/ResultCard";
-import { SearchBar } from "@/components/SearchBar";
-import { TipsFooter } from "@/components/TipsFooter";
-import { UltraEmptyState } from "@/components/UltraEmptyState";
-import { UltraNotFoundState } from "@/components/UltraNotFoundState";
-import { UltraResultCard } from "@/components/UltraResultCard";
-import { search } from "@/lib/search";
-import { searchUltra } from "@/lib/searchUltra";
+import { useState } from "react";
+import { AlimentacaoPage } from "@/components/AlimentacaoPage";
+import { FootCarePage } from "@/components/FootCarePage";
 
-const PLACEHOLDERS: Record<Mode, string> = {
-  semaforo: "Ex: maçã, arroz, refrigerante...",
-  ultraprocessado: "Ex: Nutella, Toddynho, miojo...",
-};
+type Section = "pe-diabetico" | "alimentacao";
 
-const SUBTITLES: Record<Mode, string> = {
-  semaforo:
-    "Digite o nome de um alimento e veja na hora se você pode comer à vontade, com moderação ou se é melhor evitar.",
-  ultraprocessado:
-    "Digite o nome de um produto e descubra se é um alimento ultraprocessado que pode prejudicar sua saúde.",
+const SECTIONS: {
+  value: Section;
+  emoji: string;
+  label: string;
+  short: string;
+}[] = [
+  { value: "pe-diabetico", emoji: "🦶", label: "Cuidados com os Pés", short: "Pés" },
+  { value: "alimentacao", emoji: "🍎", label: "Alimentação", short: "Alimentação" },
+];
+
+const TITLES: Record<Section, string> = {
+  "pe-diabetico": "Cuide dos seus pés todos os dias.",
+  alimentacao: "Descubra como cada alimento afeta o seu açúcar no sangue.",
 };
 
 export default function Page() {
-  const [mode, setMode] = useState<Mode>("semaforo");
-  const [semQuery, setSemQuery] = useState("");
-  const [ultraQuery, setUltraQuery] = useState("");
-
-  const query = mode === "semaforo" ? semQuery : ultraQuery;
-  const setQuery = mode === "semaforo" ? setSemQuery : setUltraQuery;
-
-  const deferredQuery = useDeferredValue(query);
-  const trimmed = deferredQuery.trim();
-
-  const semResult = useMemo(
-    () => (mode === "semaforo" && trimmed ? search(trimmed) : null),
-    [mode, trimmed],
-  );
-  const ultraResult = useMemo(
-    () => (mode === "ultraprocessado" && trimmed ? searchUltra(trimmed) : null),
-    [mode, trimmed],
-  );
-
-  function handleModeChange(next: Mode) {
-    setMode(next);
-  }
+  const [section, setSection] = useState<Section>("pe-diabetico");
 
   return (
     <div className="mx-auto flex w-full max-w-3xl flex-col gap-7 px-5 py-10 sm:py-14">
       <header>
         <div className="flex items-center gap-3">
           <span className="text-4xl" aria-hidden="true">
-            🚦
+            💙
           </span>
           <p className="text-base sm:text-lg font-semibold uppercase tracking-wider text-[var(--accent)]">
-            Alimentação e Diabetes
+            Diabetes — Cuidados Diários
           </p>
         </div>
         <h1 className="mt-3 text-3xl sm:text-4xl font-bold leading-tight text-[var(--foreground)]">
-          {mode === "semaforo"
-            ? "Descubra como cada alimento afeta o seu açúcar no sangue."
-            : "Descubra se um produto é ultraprocessado."}
+          {TITLES[section]}
         </h1>
-        <p className="mt-3 text-lg sm:text-xl text-[var(--muted)] leading-relaxed">
-          {SUBTITLES[mode]}
-        </p>
       </header>
 
-      <ModeToggle value={mode} onChange={handleModeChange} />
+      {/* Main navigation */}
+      <nav
+        role="tablist"
+        aria-label="Escolha a seção"
+        className="grid grid-cols-2 gap-2 rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-2 shadow-sm"
+      >
+        {SECTIONS.map((s) => {
+          const active = s.value === section;
+          return (
+            <button
+              key={s.value}
+              type="button"
+              role="tab"
+              aria-selected={active}
+              onClick={() => setSection(s.value)}
+              className={`flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 rounded-xl px-2 sm:px-4 py-3 sm:py-0 sm:min-h-14 text-[0.8125rem] sm:text-lg font-semibold transition-colors ${
+                active
+                  ? "bg-[var(--accent)] text-white shadow-sm"
+                  : "text-[var(--foreground)] hover:bg-slate-100"
+              }`}
+            >
+              <span className="text-lg sm:text-xl" aria-hidden="true">
+                {s.emoji}
+              </span>
+              <span className="hidden sm:inline">{s.label}</span>
+              <span className="sm:hidden leading-tight text-center">
+                {s.short}
+              </span>
+            </button>
+          );
+        })}
+      </nav>
 
-      <SearchBar
-        value={query}
-        onChange={setQuery}
-        placeholder={PLACEHOLDERS[mode]}
-      />
-
-      <div className="min-h-[200px]">
-        {mode === "semaforo" && (
-          <>
-            {!trimmed && <EmptyState />}
-            {trimmed && semResult?.match && <ResultCard food={semResult.match} />}
-            {trimmed && semResult && !semResult.match && (
-              <NotFoundState
-                query={trimmed}
-                suggestions={semResult.suggestions}
-                onPick={setSemQuery}
-              />
-            )}
-          </>
-        )}
-
-        {mode === "ultraprocessado" && (
-          <>
-            {!trimmed && <UltraEmptyState />}
-            {trimmed && ultraResult?.match && (
-              <UltraResultCard item={ultraResult.match} />
-            )}
-            {trimmed && ultraResult && !ultraResult.match && (
-              <UltraNotFoundState
-                query={trimmed}
-                suggestions={ultraResult.suggestions}
-                onPick={setUltraQuery}
-              />
-            )}
-          </>
-        )}
-      </div>
-
-      <TipsFooter />
+      {/* Content */}
+      {section === "pe-diabetico" && <FootCarePage />}
+      {section === "alimentacao" && <AlimentacaoPage />}
 
       <footer className="pt-4 pb-2 text-center text-sm text-[var(--muted)]">
         Informações educativas. Não substitui a orientação de um profissional

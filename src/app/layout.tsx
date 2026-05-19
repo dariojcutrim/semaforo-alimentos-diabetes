@@ -8,9 +8,9 @@ const geistSans = Geist({
 });
 
 export const metadata: Metadata = {
-  title: "Semáforo dos Alimentos | Diabetes",
+  title: "Diabetes — Cuidados Diários",
   description:
-    "Descubra em qual cor do semáforo cada alimento está e cuide melhor do seu açúcar no sangue.",
+    "Checklist diário para pé diabético e semáforo dos alimentos. Cuide da sua saúde todos os dias.",
 };
 
 export const viewport: Viewport = {
