@@ -130,7 +130,7 @@ function ChecklistSection({
                 >
                   {isChecked ? "✓" : item.emoji}
                 </span>
-                <span className={isChecked ? "line-through opacity-70" : ""}>
+                <span className={`min-w-0 ${isChecked ? "line-through opacity-70" : ""}`}>
                   {item.label}
                 </span>
               </button>
