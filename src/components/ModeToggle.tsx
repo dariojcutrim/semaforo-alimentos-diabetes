@@ -28,17 +28,17 @@ export function ModeToggle({ value, onChange }: Props) {
             role="tab"
             aria-selected={active}
             onClick={() => onChange(opt.value)}
-            className={`flex min-h-14 items-center justify-center gap-2 rounded-xl px-4 text-base sm:text-lg font-semibold transition-colors ${
+            className={`flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 rounded-xl px-2 sm:px-4 py-3 sm:py-0 sm:min-h-14 text-[0.8125rem] sm:text-lg font-semibold transition-colors ${
               active
                 ? "bg-[var(--accent)] text-white shadow-sm"
                 : "text-[var(--foreground)] hover:bg-slate-100"
             }`}
           >
-            <span className="text-xl" aria-hidden="true">
+            <span className="text-lg sm:text-xl" aria-hidden="true">
               {opt.emoji}
             </span>
             <span className="hidden sm:inline">{opt.label}</span>
-            <span className="sm:hidden">{opt.short}</span>
+            <span className="sm:hidden leading-tight text-center">{opt.short}</span>
           </button>
         );
       })}
