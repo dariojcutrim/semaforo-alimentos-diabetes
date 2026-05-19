@@ -20,6 +20,7 @@ export interface Food {
   tier: Tier;
   category: Category;
   synonyms?: string[];
+  tip?: string;
 }
 
 export interface TierInfo {
@@ -158,6 +159,7 @@ export const FOODS: Food[] = [
   { name: "Carne cozida", tier: "verde", category: "Proteínas", synonyms: ["carne", "carne de panela"] },
   { name: "Ricota", tier: "verde", category: "Proteínas", synonyms: ["queijo ricota"] },
   { name: "Queijo minas frescal", tier: "verde", category: "Proteínas", synonyms: ["minas frescal", "queijo minas", "queijo branco", "queijo fresco"] },
+  { name: "Sashimi", tier: "verde", category: "Proteínas", synonyms: ["sashimi de salmão", "sashimi de atum", "sashimi salmao", "sashimi atum"], tip: "Fatias de peixe cru sem arroz — tem 0g de carboidratos! Rico em ômega-3, ótimo para o coração. É a melhor escolha em um restaurante japonês para quem tem diabetes." },
 
   // ─────────────────────────────────────────────
   // 🟢 VERDE — Grãos integrais e leguminosas
@@ -236,6 +238,7 @@ export const FOODS: Food[] = [
   { name: "Bolacha cream cracker", tier: "amarelo", category: "Outros", synonyms: ["bolacha", "biscoito cream cracker", "cream cracker"] },
   { name: "Iogurte adoçado", tier: "amarelo", category: "Outros", synonyms: ["iogurte", "danone"] },
   { name: "Pipoca", tier: "amarelo", category: "Outros", synonyms: ["pipoca caseira"] },
+  { name: "Sushi", tier: "amarelo", category: "Outros", synonyms: ["temaki", "hot roll", "hot philadelphia", "jow", "comida japonesa"], tip: "O arroz do sushi é refinado e preparado com açúcar, causando picos de glicemia. Cada unidade tem de 7 a 14g de carboidratos — várias unidades somam rápido! O peixe (salmão, atum) ajuda a frear a absorção do açúcar. Prefira o sashimi (só o peixe, 0g de carboidratos) e evite opções fritas como hot rolls e cream cheese." },
 
   // ─────────────────────────────────────────────
   // 🔴 VERMELHO — Doces

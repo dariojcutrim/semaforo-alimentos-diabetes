@@ -60,10 +60,25 @@ export function ResultCard({ food }: Props) {
         {food.tier === "amarelo" && (
           <div className="mt-6 rounded-2xl border-2 border-[var(--amarelo)]/40 bg-white/70 p-5">
             <p className="text-base sm:text-lg font-semibold">
-              💡 Dica importante
+              💡 {food.tip ? "Atenção" : "Dica importante"}
             </p>
             <p className="mt-2 text-lg sm:text-xl leading-relaxed">
-              {YELLOW_TIP}
+              {food.tip ?? YELLOW_TIP}
+            </p>
+          </div>
+        )}
+
+        {food.tier !== "amarelo" && food.tip && (
+          <div className={`mt-6 rounded-2xl border-2 ${
+            food.tier === "verde"
+              ? "border-[var(--verde)]/30 bg-white/70"
+              : "border-[var(--vermelho)]/30 bg-white/70"
+          } p-5`}>
+            <p className="text-base sm:text-lg font-semibold">
+              💡 Saiba mais
+            </p>
+            <p className="mt-2 text-lg sm:text-xl leading-relaxed">
+              {food.tip}
             </p>
           </div>
         )}
