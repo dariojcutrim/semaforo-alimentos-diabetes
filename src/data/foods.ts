@@ -4,12 +4,16 @@ export type Category =
   | "Verduras e legumes"
   | "Frutas"
   | "Proteínas"
+  | "Laticínios"
   | "Grãos integrais e leguminosas"
   | "Oleaginosas e sementes"
   | "Gorduras boas"
   | "Bebidas"
   | "Massas e carboidratos"
   | "Frutas mais doces"
+  | "Comidas típicas"
+  | "Adoçantes e açúcares"
+  | "Low carb"
   | "Outros"
   | "Doces"
   | "Industrializados"
@@ -101,7 +105,7 @@ export const FOODS: Food[] = [
   // ─────────────────────────────────────────────
   { name: "Abacate", tier: "verde", category: "Frutas" },
   { name: "Abiu", tier: "verde", category: "Frutas" },
-  { name: "Açaí", tier: "verde", category: "Frutas", synonyms: ["acai", "açaí natural", "polpa de açaí", "polpa de acai"] },
+  { name: "Açaí", tier: "verde", category: "Frutas", synonyms: ["acai", "açaí natural", "polpa de açaí", "polpa de acai", "açaí puro", "acai puro"], tip: "Açaí natural, sem xarope de guaraná, granola ou banana, é rico em antioxidantes e gorduras boas. Cuidado: o açaí da tigela costuma vir adoçado — pergunte sempre antes de pedir." },
   { name: "Acerola", tier: "verde", category: "Frutas" },
   { name: "Ameixa fresca", tier: "verde", category: "Frutas", synonyms: ["ameixa"] },
   { name: "Amora", tier: "verde", category: "Frutas", synonyms: ["amora preta", "amora branca", "amora vermelha"] },
@@ -109,7 +113,6 @@ export const FOODS: Food[] = [
   { name: "Araticum", tier: "verde", category: "Frutas" },
   { name: "Atemoia", tier: "verde", category: "Frutas" },
   { name: "Bacuri", tier: "verde", category: "Frutas" },
-  { name: "Buriti", tier: "verde", category: "Frutas" },
   { name: "Cacau", tier: "verde", category: "Frutas" },
   { name: "Cagaita", tier: "verde", category: "Frutas" },
   { name: "Cajá", tier: "verde", category: "Frutas", synonyms: ["caja"] },
@@ -117,7 +120,6 @@ export const FOODS: Food[] = [
   { name: "Carambola", tier: "verde", category: "Frutas" },
   { name: "Cereja", tier: "verde", category: "Frutas" },
   { name: "Ciriguela", tier: "verde", category: "Frutas", synonyms: ["seriguela"] },
-  { name: "Cupuaçu", tier: "verde", category: "Frutas", synonyms: ["cupuacu"] },
   { name: "Figo", tier: "verde", category: "Frutas" },
   { name: "Framboesa", tier: "verde", category: "Frutas" },
   { name: "Fruta-do-conde", tier: "verde", category: "Frutas", synonyms: ["fruta do conde", "ata", "pinha"] },
@@ -143,7 +145,9 @@ export const FOODS: Food[] = [
   { name: "Pera", tier: "verde", category: "Frutas" },
   { name: "Pequi", tier: "verde", category: "Frutas" },
   { name: "Pêssego", tier: "verde", category: "Frutas", synonyms: ["pessego"] },
+  { name: "Physalis", tier: "verde", category: "Frutas", synonyms: ["fisalis"] },
   { name: "Pitanga", tier: "verde", category: "Frutas" },
+  { name: "Pitaya", tier: "verde", category: "Frutas", synonyms: ["pitaia", "fruta do dragão", "fruta do dragao"] },
   { name: "Pitomba", tier: "verde", category: "Frutas" },
   { name: "Romã", tier: "verde", category: "Frutas", synonyms: ["roma"] },
   { name: "Tamarindo", tier: "verde", category: "Frutas" },
@@ -155,11 +159,34 @@ export const FOODS: Food[] = [
   // ─────────────────────────────────────────────
   { name: "Ovo", tier: "verde", category: "Proteínas", synonyms: ["ovos"] },
   { name: "Frango", tier: "verde", category: "Proteínas", synonyms: ["galinha", "peito de frango"] },
-  { name: "Peixe", tier: "verde", category: "Proteínas", synonyms: ["tilapia", "sardinha", "atum"] },
+  { name: "Peixe", tier: "verde", category: "Proteínas", synonyms: ["tilapia", "tilápia", "merluza", "pescada"] },
+  { name: "Sardinha", tier: "verde", category: "Proteínas", synonyms: ["sardinhas", "sardinha em lata", "sardinha enlatada"] },
+  { name: "Atum", tier: "verde", category: "Proteínas", synonyms: ["atum fresco", "atum em água", "atum em agua", "atum em lata"] },
+  { name: "Bacalhau", tier: "verde", category: "Proteínas" },
+  { name: "Camarão", tier: "verde", category: "Proteínas", synonyms: ["camarao", "camarões", "camaroes"] },
+  { name: "Polvo", tier: "verde", category: "Proteínas" },
+  { name: "Lula", tier: "verde", category: "Proteínas" },
+  { name: "Tofu", tier: "verde", category: "Proteínas", synonyms: ["queijo de soja"] },
+  { name: "Tempeh", tier: "verde", category: "Proteínas" },
+  { name: "Fígado bovino", tier: "verde", category: "Proteínas", synonyms: ["figado", "fígado", "figado bovino", "fígado de boi"] },
+  { name: "Coração de frango", tier: "verde", category: "Proteínas", synonyms: ["coracao de frango", "coraçãozinho", "coracaozinho"] },
   { name: "Carne cozida", tier: "verde", category: "Proteínas", synonyms: ["carne", "carne de panela"] },
-  { name: "Ricota", tier: "verde", category: "Proteínas", synonyms: ["queijo ricota"] },
-  { name: "Queijo minas frescal", tier: "verde", category: "Proteínas", synonyms: ["minas frescal", "queijo minas", "queijo branco", "queijo fresco"] },
   { name: "Sashimi", tier: "verde", category: "Proteínas", synonyms: ["sashimi de salmão", "sashimi de atum", "sashimi salmao", "sashimi atum"], tip: "Fatias de peixe cru sem arroz — tem 0g de carboidratos! Rico em ômega-3, ótimo para o coração. É a melhor escolha em um restaurante japonês para quem tem diabetes." },
+
+  // ─────────────────────────────────────────────
+  // 🟢 VERDE — Laticínios
+  // ─────────────────────────────────────────────
+  { name: "Iogurte natural integral", tier: "verde", category: "Laticínios", synonyms: ["iogurte natural", "iogurte integral", "iogurte natural sem açúcar", "iogurte natural sem acucar"] },
+  { name: "Iogurte natural desnatado", tier: "verde", category: "Laticínios", synonyms: ["iogurte desnatado"] },
+  { name: "Iogurte grego natural", tier: "verde", category: "Laticínios", synonyms: ["iogurte grego", "iogurte grego sem açúcar", "iogurte grego sem acucar"] },
+  { name: "Skyr natural", tier: "verde", category: "Laticínios", synonyms: ["skyr"] },
+  { name: "Kefir", tier: "verde", category: "Laticínios" },
+  { name: "Queijo minas frescal", tier: "verde", category: "Laticínios", synonyms: ["minas frescal", "queijo minas", "queijo branco", "queijo fresco"] },
+  { name: "Ricota", tier: "verde", category: "Laticínios", synonyms: ["queijo ricota"] },
+  { name: "Queijo cottage", tier: "verde", category: "Laticínios", synonyms: ["cottage"] },
+  { name: "Leite desnatado", tier: "verde", category: "Laticínios" },
+  { name: "Leite de amêndoas", tier: "verde", category: "Laticínios", synonyms: ["leite de amendoas", "leite de amêndoa sem açúcar", "leite de amendoa sem acucar"] },
+  { name: "Leite de soja sem açúcar", tier: "verde", category: "Laticínios", synonyms: ["leite de soja"] },
 
   // ─────────────────────────────────────────────
   // 🟢 VERDE — Grãos integrais e leguminosas
@@ -196,6 +223,30 @@ export const FOODS: Food[] = [
   { name: "Água", tier: "verde", category: "Bebidas", synonyms: ["agua"] },
   { name: "Café sem açúcar", tier: "verde", category: "Bebidas", synonyms: ["cafe", "cafe sem acucar", "cafe preto"] },
   { name: "Chá sem açúcar", tier: "verde", category: "Bebidas", synonyms: ["cha", "cha sem acucar"] },
+  { name: "Chá verde", tier: "verde", category: "Bebidas", synonyms: ["cha verde"] },
+  { name: "Chá de hibisco", tier: "verde", category: "Bebidas", synonyms: ["cha de hibisco", "hibisco"] },
+  { name: "Chá preto", tier: "verde", category: "Bebidas", synonyms: ["cha preto"] },
+  { name: "Mate sem açúcar", tier: "verde", category: "Bebidas", synonyms: ["mate", "chimarrão", "chimarrao", "tererê", "terere", "erva mate"] },
+
+  // ─────────────────────────────────────────────
+  // 🟢 VERDE — Adoçantes e açúcares
+  // ─────────────────────────────────────────────
+  { name: "Stevia", tier: "verde", category: "Adoçantes e açúcares", synonyms: ["estévia", "estevia"] },
+  { name: "Eritritol", tier: "verde", category: "Adoçantes e açúcares" },
+  { name: "Xilitol", tier: "verde", category: "Adoçantes e açúcares" },
+  { name: "Gelatina diet", tier: "verde", category: "Adoçantes e açúcares", synonyms: ["gelatina zero", "gelatina sem açúcar", "gelatina sem acucar"] },
+
+  // ─────────────────────────────────────────────
+  // 🟢 VERDE — Low carb / fitness
+  // ─────────────────────────────────────────────
+  { name: "Whey protein", tier: "verde", category: "Low carb", synonyms: ["whey", "whey sem açúcar", "whey sem acucar", "proteína em pó", "proteina em po"] },
+  { name: "Pão low carb", tier: "verde", category: "Low carb", synonyms: ["pao low carb", "pão lowcarb"] },
+  { name: "Farinha de amêndoa", tier: "verde", category: "Low carb", synonyms: ["farinha de amendoa"] },
+  { name: "Farinha de coco", tier: "verde", category: "Low carb" },
+  { name: "Psyllium", tier: "verde", category: "Low carb", synonyms: ["psilio", "psílio"] },
+  { name: "Pasta de amendoim integral", tier: "verde", category: "Low carb", synonyms: ["pasta de amendoim 100%", "pasta de amendoim sem açúcar", "pasta de amendoim sem acucar"] },
+  { name: "Tahine", tier: "verde", category: "Low carb", synonyms: ["pasta de gergelim", "tahini"] },
+  { name: "Chocolate 85%", tier: "verde", category: "Low carb", synonyms: ["chocolate 85", "chocolate 90%", "chocolate 90", "chocolate amargo 85", "chocolate amargo 90"], tip: "Em pequenas porções (1–2 quadradinhos) pode até ajudar na saciedade. Cuidado: chocolates 'amargos' abaixo de 70% ainda têm bastante açúcar." },
 
   // ─────────────────────────────────────────────
   // 🟡 AMARELO — Massas e carboidratos
@@ -203,15 +254,28 @@ export const FOODS: Food[] = [
   { name: "Arroz branco", tier: "amarelo", category: "Massas e carboidratos", synonyms: ["arroz"] },
   { name: "Macarrão", tier: "amarelo", category: "Massas e carboidratos", synonyms: ["macarrao", "espaguete", "talharim", "massa"] },
   { name: "Pão francês", tier: "amarelo", category: "Massas e carboidratos", synonyms: ["pao", "pao frances", "pãozinho", "paozinho"] },
-  { name: "Cuscuz", tier: "amarelo", category: "Massas e carboidratos" },
-  { name: "Tapioca", tier: "amarelo", category: "Massas e carboidratos" },
   { name: "Batata", tier: "amarelo", category: "Massas e carboidratos", synonyms: ["batata inglesa", "purê", "pure"] },
   { name: "Batata-doce", tier: "amarelo", category: "Massas e carboidratos", synonyms: ["batata doce", "batata doce branca", "batata doce amarela"] },
   { name: "Inhame", tier: "amarelo", category: "Massas e carboidratos" },
   { name: "Cará", tier: "amarelo", category: "Massas e carboidratos", synonyms: ["cara"] },
   { name: "Mandioquinha", tier: "amarelo", category: "Massas e carboidratos", synonyms: ["batata baroa", "batata salsa"] },
   { name: "Mandioca", tier: "amarelo", category: "Massas e carboidratos", synonyms: ["aipim", "macaxeira"] },
-  { name: "Farinha de mandioca", tier: "amarelo", category: "Massas e carboidratos", synonyms: ["farinha de tapioca"] },
+
+  // ─────────────────────────────────────────────
+  // 🟡 AMARELO — Comidas típicas brasileiras
+  // ─────────────────────────────────────────────
+  { name: "Tapioca", tier: "amarelo", category: "Comidas típicas", synonyms: ["tapioca recheada"], tip: "É carboidrato refinado e tem índice glicêmico alto. Prefira recheios com proteína e gordura boa (ovo, queijo, frango, abacate) para reduzir o pico de glicemia. Evite recheios doces." },
+  { name: "Cuscuz paulista", tier: "amarelo", category: "Comidas típicas" },
+  { name: "Cuscuz nordestino", tier: "amarelo", category: "Comidas típicas", synonyms: ["cuscuz", "cuscuz de flocão", "cuscuz de flocao", "flocão de milho", "flocao de milho"] },
+  { name: "Farinha de mandioca", tier: "amarelo", category: "Comidas típicas", synonyms: ["farinha de tapioca"] },
+  { name: "Farofa simples", tier: "amarelo", category: "Comidas típicas", synonyms: ["farofa"] },
+  { name: "Pão de queijo", tier: "amarelo", category: "Comidas típicas", synonyms: ["pao de queijo"], tip: "Melhor opção que pão francês por ter polvilho + queijo + ovo, mas ainda é carboidrato. Limite a 1–2 unidades pequenas." },
+  { name: "Beiju", tier: "amarelo", category: "Comidas típicas" },
+  { name: "Baião de dois", tier: "amarelo", category: "Comidas típicas", synonyms: ["baiao de dois"] },
+  { name: "Acarajé", tier: "amarelo", category: "Comidas típicas", synonyms: ["acaraje"], tip: "O feijão fradinho é bom, mas é frito em dendê. Coma ocasionalmente e evite o vatapá doce no recheio." },
+  { name: "Pamonha salgada", tier: "amarelo", category: "Comidas típicas" },
+  { name: "Esfiha assada", tier: "amarelo", category: "Comidas típicas", synonyms: ["esfirra assada"] },
+  { name: "Kibe assado", tier: "amarelo", category: "Comidas típicas", synonyms: ["quibe assado"] },
 
   // ─────────────────────────────────────────────
   // 🟡 AMARELO — Frutas mais doces
@@ -224,13 +288,47 @@ export const FOODS: Food[] = [
   { name: "Caqui", tier: "amarelo", category: "Frutas mais doces" },
   { name: "Jaca", tier: "amarelo", category: "Frutas mais doces" },
   { name: "Uva", tier: "amarelo", category: "Frutas mais doces", synonyms: ["uvas", "uva rubi", "uva itália", "uva italia", "uva niágara", "uva niagara"] },
-  { name: "Uva passa", tier: "amarelo", category: "Frutas mais doces", synonyms: ["passas", "uvas passas", "uva-passa", "uva passa branca", "uva passa escura"] },
-  { name: "Tâmaras", tier: "amarelo", category: "Frutas mais doces", synonyms: ["tamara", "tâmara", "tamaras"] },
-  { name: "Damasco seco", tier: "amarelo", category: "Frutas mais doces", synonyms: ["damasco"] },
-  { name: "Ameixa seca", tier: "amarelo", category: "Frutas mais doces", synonyms: ["ameixas secas"] },
+  { name: "Buriti", tier: "amarelo", category: "Frutas mais doces" },
+  { name: "Cupuaçu", tier: "amarelo", category: "Frutas mais doces", synonyms: ["cupuacu"] },
+  { name: "Uva passa", tier: "amarelo", category: "Frutas mais doces", synonyms: ["passas", "uvas passas", "uva-passa", "uva passa branca", "uva passa escura"], tip: "Açúcar concentrado. Limite a 1 colher de sopa rasa por vez." },
+  { name: "Damasco seco", tier: "amarelo", category: "Frutas mais doces", synonyms: ["damasco"], tip: "Concentra muito açúcar no processo de desidratação. Porção segura: 2–3 unidades." },
+  { name: "Ameixa seca", tier: "amarelo", category: "Frutas mais doces", synonyms: ["ameixas secas"], tip: "Boa para o intestino, mas tem bastante açúcar. Máximo 2–3 unidades por dia." },
   { name: "Figo seco", tier: "amarelo", category: "Frutas mais doces" },
   { name: "Maçã seca", tier: "amarelo", category: "Frutas mais doces", synonyms: ["maca seca", "maçã desidratada", "maca desidratada"] },
   { name: "Frutas em calda", tier: "amarelo", category: "Frutas mais doces", synonyms: ["fruta em calda", "pêssego em calda", "pessego em calda", "abacaxi em calda"] },
+
+  // ─────────────────────────────────────────────
+  // 🟡 AMARELO — Laticínios
+  // ─────────────────────────────────────────────
+  { name: "Mussarela", tier: "amarelo", category: "Laticínios", synonyms: ["muçarela", "queijo mussarela"] },
+  { name: "Parmesão", tier: "amarelo", category: "Laticínios", synonyms: ["parmesao", "queijo parmesão"] },
+  { name: "Requeijão", tier: "amarelo", category: "Laticínios", synonyms: ["requeijao", "catupiry"] },
+  { name: "Cream cheese", tier: "amarelo", category: "Laticínios" },
+  { name: "Leite integral", tier: "amarelo", category: "Laticínios", synonyms: ["leite"] },
+  { name: "Leite de aveia", tier: "amarelo", category: "Laticínios" },
+  { name: "Leite de coco", tier: "amarelo", category: "Laticínios" },
+
+  // ─────────────────────────────────────────────
+  // 🟡 AMARELO — Adoçantes e açúcares
+  // ─────────────────────────────────────────────
+  { name: "Sucralose", tier: "amarelo", category: "Adoçantes e açúcares", tip: "Adoçante seguro em uso moderado. Evite usar em grandes quantidades diariamente." },
+  { name: "Aspartame", tier: "amarelo", category: "Adoçantes e açúcares" },
+  { name: "Geleia diet", tier: "amarelo", category: "Adoçantes e açúcares", synonyms: ["geleia zero", "geleia sem açúcar", "geleia sem acucar"] },
+  { name: "Refrigerante zero", tier: "amarelo", category: "Adoçantes e açúcares", synonyms: ["refri zero", "coca zero", "coca-cola zero", "guaraná zero", "guarana zero", "refrigerante diet", "refri diet"], tip: "Não eleva a glicemia, mas o consumo frequente está associado a maior compulsão por doces. Prefira água, água com limão ou chás." },
+  { name: "Suco em pó zero", tier: "amarelo", category: "Adoçantes e açúcares", synonyms: ["suco em pó diet", "suco em po zero", "suco em po diet", "tang zero", "clight"] },
+
+  // ─────────────────────────────────────────────
+  // 🟡 AMARELO — Low carb / fitness
+  // ─────────────────────────────────────────────
+  { name: "Barrinha de proteína", tier: "amarelo", category: "Low carb", synonyms: ["barra de proteína", "barra de proteina", "barrinha de proteina", "barrinha proteica"], tip: "Varia muito entre marcas. Procure no rótulo: até 5g de açúcar e pelo menos 10g de proteína por unidade." },
+  { name: "Chocolate 70%", tier: "amarelo", category: "Low carb", synonyms: ["chocolate 70", "chocolate amargo 70"] },
+
+  // ─────────────────────────────────────────────
+  // 🟡 AMARELO — Bebidas
+  // ─────────────────────────────────────────────
+  { name: "Kombucha", tier: "amarelo", category: "Bebidas", tip: "Tem um pouco de açúcar residual da fermentação. Versões com sabor adicionado podem ter bastante açúcar — leia o rótulo." },
+  { name: "Água de coco", tier: "amarelo", category: "Bebidas", synonyms: ["agua de coco", "coco água", "coco agua"], tip: "Natural, mas contém carboidratos. Limite a 1 copo pequeno por vez e prefira a fruta inteira quando possível." },
+  { name: "Café com leite", tier: "amarelo", category: "Bebidas", synonyms: ["cafe com leite", "pingado"] },
 
   // ─────────────────────────────────────────────
   // 🟡 AMARELO — Outros
@@ -238,9 +336,26 @@ export const FOODS: Food[] = [
   { name: "Suco natural", tier: "amarelo", category: "Outros", synonyms: ["suco", "suco de fruta", "suco de laranja", "suco natural sem açúcar"] },
   { name: "Açaí com farinha", tier: "amarelo", category: "Outros", synonyms: ["acai com farinha", "açaí na tigela", "acai na tigela", "bowl de açaí", "bowl de acai"] },
   { name: "Bolacha cream cracker", tier: "amarelo", category: "Outros", synonyms: ["bolacha", "biscoito cream cracker", "cream cracker"] },
-  { name: "Iogurte adoçado", tier: "amarelo", category: "Outros", synonyms: ["iogurte", "danone"] },
+  { name: "Iogurte adoçado", tier: "amarelo", category: "Outros", synonyms: ["iogurte adocado"] },
   { name: "Pipoca", tier: "amarelo", category: "Outros", synonyms: ["pipoca caseira"] },
   { name: "Sushi", tier: "amarelo", category: "Outros", synonyms: ["temaki", "hot roll", "hot philadelphia", "jow", "comida japonesa"], tip: "O arroz do sushi é refinado e preparado com açúcar, causando picos de glicemia. Cada unidade tem de 7 a 14g de carboidratos — várias unidades somam rápido! O peixe (salmão, atum) ajuda a frear a absorção do açúcar. Prefira o sashimi (só o peixe, 0g de carboidratos) e evite opções fritas como hot rolls e cream cheese." },
+
+  // ─────────────────────────────────────────────
+  // 🔴 VERMELHO — Comidas típicas brasileiras
+  // ─────────────────────────────────────────────
+  { name: "Pamonha doce", tier: "vermelho", category: "Comidas típicas" },
+  { name: "Curau", tier: "vermelho", category: "Comidas típicas", synonyms: ["canjica"] },
+  { name: "Coxinha", tier: "vermelho", category: "Comidas típicas" },
+  { name: "Pastel frito", tier: "vermelho", category: "Comidas típicas", synonyms: ["pastel"] },
+  { name: "Empada", tier: "vermelho", category: "Comidas típicas", synonyms: ["empadinha"] },
+  { name: "Esfiha frita", tier: "vermelho", category: "Comidas típicas", synonyms: ["esfirra frita"] },
+  { name: "Kibe frito", tier: "vermelho", category: "Comidas típicas", synonyms: ["quibe frito"] },
+  { name: "Brigadeiro", tier: "vermelho", category: "Comidas típicas" },
+  { name: "Beijinho", tier: "vermelho", category: "Comidas típicas", synonyms: ["branquinho"] },
+  { name: "Quindim", tier: "vermelho", category: "Comidas típicas" },
+  { name: "Bolo de fubá", tier: "vermelho", category: "Comidas típicas", synonyms: ["bolo de fuba"] },
+  { name: "Bolo de cenoura com cobertura", tier: "vermelho", category: "Comidas típicas", synonyms: ["bolo de cenoura"] },
+  { name: "Rapadura", tier: "vermelho", category: "Comidas típicas" },
 
   // ─────────────────────────────────────────────
   // 🔴 VERMELHO — Doces
@@ -248,13 +363,29 @@ export const FOODS: Food[] = [
   { name: "Refrigerante", tier: "vermelho", category: "Doces", synonyms: ["refri", "coca", "coca-cola", "pepsi", "guaraná", "guarana", "fanta", "sprite"] },
   { name: "Biscoito recheado", tier: "vermelho", category: "Doces", synonyms: ["bolacha recheada", "recheado"] },
   { name: "Balas", tier: "vermelho", category: "Doces", synonyms: ["bala", "doce", "doces"] },
-  { name: "Chocolate", tier: "vermelho", category: "Doces", synonyms: ["bombom", "barra de chocolate"] },
+  { name: "Chocolate", tier: "vermelho", category: "Doces", synonyms: ["bombom", "barra de chocolate", "chocolate ao leite"] },
   { name: "Bolo recheado", tier: "vermelho", category: "Doces", synonyms: ["bolo"] },
   { name: "Pudim", tier: "vermelho", category: "Doces" },
-  { name: "Mel", tier: "vermelho", category: "Doces" },
-  { name: "Melado", tier: "vermelho", category: "Doces", synonyms: ["melaço", "melaco de cana"] },
-  { name: "Açúcar mascavo", tier: "vermelho", category: "Doces", synonyms: ["acucar mascavo"] },
-  { name: "Açúcar de coco", tier: "vermelho", category: "Doces", synonyms: ["acucar de coco"] },
+
+  // ─────────────────────────────────────────────
+  // 🔴 VERMELHO — Frutas secas muito doces
+  // ─────────────────────────────────────────────
+  { name: "Tâmara", tier: "vermelho", category: "Doces", synonyms: ["tamara", "tâmaras", "tamaras"], tip: "Uma das frutas com maior concentração de açúcar do mundo. Evite no diabetes." },
+  { name: "Banana passa", tier: "vermelho", category: "Doces", synonyms: ["banana-passa", "banana desidratada"] },
+
+  // ─────────────────────────────────────────────
+  // 🔴 VERMELHO — Adoçantes e açúcares
+  // ─────────────────────────────────────────────
+  { name: "Açúcar mascavo", tier: "vermelho", category: "Adoçantes e açúcares", synonyms: ["acucar mascavo"], tip: "Apesar da fama de saudável, sobe a glicemia praticamente igual ao açúcar branco." },
+  { name: "Açúcar demerara", tier: "vermelho", category: "Adoçantes e açúcares", synonyms: ["acucar demerara"] },
+  { name: "Açúcar de coco", tier: "vermelho", category: "Adoçantes e açúcares", synonyms: ["acucar de coco"], tip: "Não é uma alternativa segura para diabéticos. Sobe a glicemia como açúcar comum." },
+  { name: "Mel", tier: "vermelho", category: "Adoçantes e açúcares", tip: "Açúcar natural, mas continua sendo açúcar. Eleva a glicemia rapidamente." },
+  { name: "Melado", tier: "vermelho", category: "Adoçantes e açúcares", synonyms: ["melaço", "melaco de cana"] },
+
+  // ─────────────────────────────────────────────
+  // 🔴 VERMELHO — Laticínios
+  // ─────────────────────────────────────────────
+  { name: "Iogurte de frutas industrializado", tier: "vermelho", category: "Laticínios", synonyms: ["iogurte de frutas", "iogurte morango", "iogurte de morango", "danone de frutas"], tip: "Costuma ter tanto açúcar quanto um refrigerante. Leia o rótulo — busque versões 'natural' ou 'zero açúcar'." },
 
   // ─────────────────────────────────────────────
   // 🔴 VERMELHO — Industrializados
@@ -274,6 +405,11 @@ export const FOODS: Food[] = [
   { name: "Mostarda", tier: "vermelho", category: "Industrializados", synonyms: ["mostarda condimento"] },
   { name: "Molho shoyu", tier: "vermelho", category: "Industrializados", synonyms: ["shoyu", "molho de soja", "molho soja"] },
   { name: "Maionese", tier: "vermelho", category: "Industrializados", synonyms: ["maionese industrializada", "hellmanns"] },
+
+  // ─────────────────────────────────────────────
+  // 🔴 VERMELHO — Bebidas
+  // ─────────────────────────────────────────────
+  { name: "Cappuccino industrializado", tier: "vermelho", category: "Bebidas", synonyms: ["cappuccino", "capuccino", "capuchino", "cappuccino em pó", "cappuccino em po"] },
 
   // ─────────────────────────────────────────────
   // 🔴 VERMELHO — Outros
